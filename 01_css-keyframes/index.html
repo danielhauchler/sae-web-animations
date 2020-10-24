@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSS Keyframes</title>
+  <style>
+    #box {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100px;
+      height: 100px;
+      background-color: aqua;
+
+      /* animation-name: animated-box;
+      animation-duration: 5s;
+      animation-timing-function: ease-in-out; */
+
+      animation: animated-box 5s forwards;
+    }
+
+    @keyframes animated-box {
+      0% {
+        top: 0;
+        left: 0
+      }
+      50% {
+        top: 500px;
+        left: 500px;
+      }
+      100% {
+        top: 350px;
+        left: 750px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div id="box"></div>
+</body>
+</html>

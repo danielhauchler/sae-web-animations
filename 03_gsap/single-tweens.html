@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    #box1 {
+      opacity: 0;
+      width: 200px;
+      height: 200px;
+      background-color: blueviolet;
+    }
+
+    #box2 {
+      opacity: 1;
+      width: 200px;
+      height: 200px;
+      background-color:cornflowerblue;
+      transform: translateX(500px);
+    }
+  </style>
+</head>
+<body>
+
+  <div id="box1"></div>
+  <div id="box2"></div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/gsap.min.js"></script>
+  <script>
+
+    var box1 = document.getElementById('box1'),
+        box2 = document.getElementById('box2');
+
+    gsap.to(box1, 2, { opacity: 1, x: 500, ease: Back.easeOut.config(2) })
+    gsap.from(box2, 2, { opacity: 0, x: 0, y: 100, ease: Back.easeOut.config(2) })
+
+    // gsap.set(box1, { backgroundColor: '#000000', delay: 1} )
+    gsap.set(box1, { css: {"background-color":"#000000" }, delay: 1} )
+
+  </script>
+</body>
+</html>
