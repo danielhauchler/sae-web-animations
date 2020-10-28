@@ -39,7 +39,7 @@
     var end = document.getElementById('end')
 
     // tl = timeline
-    var tl = new gsap.timeline({repeatDelay: 2})
+    var tl = new gsap.timeline()
 
     tl.add('start')
       .to( box, 2, { rotate: -360, ease: Back.easeOut }, 'start+=.3')
@@ -57,7 +57,7 @@
 
       // Loop function with Counter
       function restart() {
-        if (i < 2) {
+        if (i < 1) {
             gsap.to(box, 2, { rotate: 180, x: 0, y: 0, ease: Power3.easeIn, onComplete: done});
             i++;
         } else {
