@@ -45,7 +45,9 @@
   <div id="box-holder">
     <div id="box"></div>
     <div id="controls">
-      <div id="play" class="btn"><span>play</span></div><div id="stop" class="btn"><span>stop</span></div><div id="reverse" class="btn"><span>reverse</span></div>
+      <div id="play" class="btn"><span>play</span></div>
+      <div id="pause" class="btn"><span>pause</span></div>
+      <div id="reverse" class="btn"><span>reverse</span></div>
     </div>
   </div>
 
@@ -69,9 +71,9 @@
     // new AnimPanel(tl)
 
     // btn eventlisteners
-    document.getElementById('play').addEventListener("click", function(){tl.play();});
-    document.getElementById('stop').addEventListener("click", function(){tl.pause();});
-    document.getElementById('reverse').addEventListener("click", function(){tl.reverse();});
+    document.getElementById('play').addEventListener("click", function(){ tl.play(); });
+    document.getElementById('pause').addEventListener("click", function(){ tl.pause(); });
+    document.getElementById('reverse').addEventListener("click", function(){ tl.reverse(); });
 
   </script>
 </body>

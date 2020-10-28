@@ -44,10 +44,11 @@
     tl.add('start')
       .to( box, 2, { rotate: -360, ease: Back.easeOut }, 'start+=.3')
       .to(box, 2, { x: 200, y: 200, }, 'start+=.3')
+
       .set(box, {onComplete: restart})
 
      
-      // Restart the ad according to the desired loops
+      // Restart the animation according to the desired loops
       function done() {
         tl.restart();
       }
@@ -57,7 +58,7 @@
 
       // Loop function with Counter
       function restart() {
-        if (i < 1) {
+        if (i < 3) {
             gsap.to(box, 2, { rotate: 180, x: 0, y: 0, ease: Power3.easeIn, onComplete: done});
             i++;
         } else {
