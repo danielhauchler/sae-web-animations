@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>From To</title>
   <style>
     #box-holder {
       position: relative;
@@ -38,6 +38,10 @@
       justify-content: center;
       align-items: center;
     }
+    #label {
+      background-color:rgb(20, 255, 235);
+      color: #111
+    }
   </style>
 </head>
 
@@ -64,10 +68,10 @@
     var tl = new gsap.timeline({repeat: -1})
 
     tl.add('start')
-      .to(box, .6, { y: 300, rotate: 90, ease: Power3.easeInOut })
-      .to(box, .6, { x: 300, rotate: 180, ease: Power3.easeInOut })
-      .to(box, .6, { y: 0, rotate: 270, ease: Power3.easeInOut })
-      .to(box, .6, { x: 0, rotate: 360, ease: Power3.easeInOut })
+      .to(box, .6, { x: 0, y: 300, rotate: 90, ease: Power3.easeInOut })
+      .to(box, .6, { x: 300, y: 0, rotate: 180, ease: Power3.easeInOut })
+      .to(box, .6, { x: 300, y: 300, rotate: 90, ease: Power3.easeInOut })
+      .to(box, .6, { x: 0, y: 0, rotate: -90, ease: Power3.easeInOut })
 
     console.log(tl.duration());
     // new AnimPanel(tl)
