@@ -7,7 +7,6 @@
   <style>
 
     #slider {
-      opacity: 0;
       position: relative;
       width: 960px;
       height: 350px;
@@ -142,6 +141,38 @@
     }
 
 
+    /* panel 2 */
+    #slider-item-2 #bg-panel-2 {
+      width: 100%;
+      height: 100%;
+      background-image: url("images/panel1_city.jpg");
+      background-size: 960px 350px;
+      transform-origin: 446px;
+    }
+
+
+    /* panel 3 */
+    #slider-item-3 #bg-panel-3 {
+      width: 100%;
+      height: 100%;
+      background-image: url("images/panel1_city.jpg");
+      background-size: 960px 350px;
+      transform-origin: 446px;
+    }
+
+
+    /* panel 4 */
+    #slider-item-4 #bg-panel-4 {
+      width: 100%;
+      height: 100%;
+      background-image: url("images/panel1_city.jpg");
+      background-size: 960px 350px;
+      transform-origin: 446px;
+    }
+
+
+
+
   </style>
 </head>
 <body>
@@ -161,13 +192,13 @@
         <div id="taxi3"></div>
       </div>
       <div id="slider-item-2" class="slider-item">
-        
+        <div id="bg-panel-2"></div>
       </div>
       <div id="slider-item-3" class="slider-item">
-        
+        <div id="bg-panel-3"></div>
       </div>
       <div id="slider-item-4" class="slider-item">
-        
+        <div id="bg-panel-4"></div>
       </div>
     </div>
   </div>
@@ -198,10 +229,14 @@
         $sliderItemFour    = document.getElementById('slider-item-4');
 
     // animation panel1
-    var tlPanel1 = new gsap.timeline();
+    var tlPanel1 = new gsap.timeline(),
+        tlPanel2 = new gsap.timeline(),
+        tlPanel3 = new gsap.timeline(),
+        tlPanel4 = new gsap.timeline();
 
-    tlPanel1.to($slider, .3, {opacity: 1})
-            .add('panel-one')
+   
+
+    tlPanel1.pause()
             .to($sliderItemOne, .3, {opacity: 1})
             .from($controls, .3, {opacity: 0}, '-=.3')
             .to($bgPanel1, .9, {scale: 1.5, ease: Power2.easeOut}, '-=.3')
@@ -225,17 +260,53 @@
             .to($taxi3, 3, {top: "349px", left: "407px", ease: Linear.easeNone}, 'taxis+=8.5  ')
 
 
+    tlPanel2.pause()
+
+
+    tlPanel3.pause()
+
+    tlPanel4.pause()
             
-            .add('panel-two')
+      
+    var index = 1;
 
-            .add('panel-three')
+    if (index == 1) {
+      tlPanel1.play(0)
+    }
 
-            .add('panel-five')
+    // constrols
+    $next.addEventListener("click", function(){
+      if (index == 1) {
+        gsap.to($sliderItemOne, .3, {opacity:0});
+        gsap.to($sliderItemTwo, .3, {opacity:1});
+        tlPanel2.play(0);
+        index = 2;
+      } else if (index == 2) {
+        gsap.to($sliderItemTwo, .3, {opacity:0});
+        gsap.to($sliderItemThree, .3, {opacity:1});
+        tlPanel3.play(0);
+        index = 3;
+      } else if (index == 3) {
+        gsap.to($sliderItemThree, .3, {opacity:0});
+        gsap.to($sliderItemFour, .3, {opacity:1});
+        tlPanel4.play(0);
+        index = 4;
+      } else if (index == 4) {
+        gsap.to($sliderItemFour, .3, {opacity:0});
+        gsap.to($sliderItemOne, .3, {opacity:1});
+        tlPanel1.play(0);
+        index = 4;
+      }
 
-            .to($slider, .6, {opacity: 1}, '+=10')
+    });
+
+    $prev.addEventListener("click", function(){ 
+      console.log('next')
+    });
 
 
 
+    
 
 
 
@@ -252,16 +323,10 @@
       });
     }
 
-    // constrols
-    $prev.addEventListener("click", function(){ 
-      console.log('prev')
-    });
-    $next.addEventListener("click", function(){ 
-      console.log('next')
-    });
+    
 
     
-    new AnimPanel(tlPanel1)
+    // new AnimPanel(tlPanel1)
 
   </script>
 </body>
