@@ -29,6 +29,10 @@
       opacity: 0;
     }
 
+    #controls {
+      opacity: 0;
+    }
+
     #controls div {
       position: absolute;
       top: 50%;
@@ -145,19 +149,82 @@
     #slider-item-2 #bg-panel-2 {
       width: 100%;
       height: 100%;
-      background-image: url("images/panel1_city.jpg");
+      background-image: url("images/panel2_bench_bg.jpg");
       background-size: 960px 350px;
-      transform-origin: 446px;
     }
+
+    #headline-panel-2 {
+
+    }
+
+    #subline-panel-2 {
+      
+    }
+
+    #bowl {
+      position: absolute;
+      top: 250px;
+      left: 600px;
+      width: 100px;
+      height: 102px;
+      background-image: url(images/panel2_bowl_buttons.png);
+      background-size: 100%;
+    }
+
+    #scissors {
+      z-index: 21;
+      position: absolute;
+      top: 100px;
+      left: 100px;
+      width: 160px;
+      height: 179px;
+    }
+
+    #scissors-holder {
+      position: relative;
+      width: 100%;
+      height: 100%;
+    }
+
+    #scissors-1 {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url(images/panel2_scissor_blk_blade1.png);
+      background-size: 100%;
+    }
+
+    #scissors-2 {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url(images/panel2_scissor_blk_blade2.png);
+      background-size: 100%;
+    }
+
+    #measure {
+      z-index: 21;
+      position: absolute;
+      top: 70px;
+      right: 120px;
+      width: 90px;
+      height: 74px;
+      background-image: url(images/panel2_measure_tape.png);
+      background-size: 100%
+    }
+
+    
 
 
     /* panel 3 */
     #slider-item-3 #bg-panel-3 {
       width: 100%;
       height: 100%;
-      background-image: url("images/panel1_city.jpg");
-      background-size: 960px 350px;
-      transform-origin: 446px;
+      background-color:red;
     }
 
 
@@ -165,9 +232,7 @@
     #slider-item-4 #bg-panel-4 {
       width: 100%;
       height: 100%;
-      background-image: url("images/panel1_city.jpg");
-      background-size: 960px 350px;
-      transform-origin: 446px;
+      background-color: #fff;
     }
 
 
@@ -192,6 +257,16 @@
         <div id="taxi3"></div>
       </div>
       <div id="slider-item-2" class="slider-item">
+        <div id="headline-panel-2"></div>
+        <div id="subline-panel-2"></div>
+        <div id="bowl"></div>
+        <div id="scissors">
+          <div id="scissors-holder">
+            <div id="scissors-1"></div>
+            <div id="scissors-2"></div>
+          </div>
+        </div>
+        <div id="measure"></div>
         <div id="bg-panel-2"></div>
       </div>
       <div id="slider-item-3" class="slider-item">
@@ -235,10 +310,10 @@
         tlPanel4 = new gsap.timeline();
 
    
+   gsap.to($controls, .3, {opacity: 1}, '-=.3')
 
     tlPanel1.pause()
             .to($sliderItemOne, .3, {opacity: 1})
-            .from($controls, .3, {opacity: 0}, '-=.3')
             .to($bgPanel1, .9, {scale: 1.5, ease: Power2.easeOut}, '-=.3')
             
             .set($typePanel1, {onComplete: typePanel1 }, '-=.6')
@@ -263,6 +338,7 @@
     tlPanel2.pause()
 
 
+
     tlPanel3.pause()
 
     tlPanel4.pause()
@@ -280,28 +356,55 @@
         gsap.to($sliderItemOne, .3, {opacity:0});
         gsap.to($sliderItemTwo, .3, {opacity:1});
         tlPanel2.play(0);
+        tlPanel1.pause(0);
         index = 2;
       } else if (index == 2) {
         gsap.to($sliderItemTwo, .3, {opacity:0});
         gsap.to($sliderItemThree, .3, {opacity:1});
         tlPanel3.play(0);
+        tlPanel2.pause(0);
         index = 3;
       } else if (index == 3) {
         gsap.to($sliderItemThree, .3, {opacity:0});
         gsap.to($sliderItemFour, .3, {opacity:1});
         tlPanel4.play(0);
+        tlPanel3.pause(0);
         index = 4;
       } else if (index == 4) {
         gsap.to($sliderItemFour, .3, {opacity:0});
         gsap.to($sliderItemOne, .3, {opacity:1});
         tlPanel1.play(0);
+        tlPanel4.pause(0);
         index = 4;
       }
-
     });
 
     $prev.addEventListener("click", function(){ 
-      console.log('next')
+      if (index == 1) {
+        gsap.to($sliderItemOne, .3, {opacity:0});
+        gsap.to($sliderItemFour, .3, {opacity:1});
+        tlPanel4.play(0);
+        tlPanel1.pause(0);
+        index = 4;
+      } else if (index == 4) {
+        gsap.to($sliderItemFour, .3, {opacity:0});
+        gsap.to($sliderItemThree, .3, {opacity:1});
+        tlPanel3.play(0);
+        tlPanel4.pause(0);
+        index = 3;
+      } else if (index == 3) {
+        gsap.to($sliderItemThree, .3, {opacity:0});
+        gsap.to($sliderItemTwo, .3, {opacity:1});
+        tlPanel2.play(0);
+        tlPanel3.pause(0);
+        index = 2;
+      } else if (index == 2) {
+        gsap.to($sliderItemTwo, .3, {opacity:0});
+        gsap.to($sliderItemOne, .3, {opacity:1});
+        tlPanel1.play(0);
+        tlPanel2.pause(0);
+        index = 1;
+      }
     });
 
 
@@ -326,7 +429,7 @@
     
 
     
-    // new AnimPanel(tlPanel1)
+    new AnimPanel(tlPanel2)
 
   </script>
 </body>
