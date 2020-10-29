@@ -105,13 +105,39 @@
 
     #taxi1 {
       opacity: 0;
-      z-index: 10;
+      z-index: 7;
       position: absolute;
+      left: 218px;
       top: 95px;
-      left: 217px;
       width: 40px;
       height: 40px;
       background-image: url(images/panel1_taxi.png);
+      background-size: 40px 40px;
+    }
+
+    #taxi2 {
+      opacity: 0;
+      z-index: 7;
+      position: absolute;
+      top: 345px;
+      left: 35px;
+      width: 40px;
+      height: 40px;
+      transform: rotate(-90deg);
+      background-image: url(images/panel1_taxi.png);
+      background-size: 40px 40px;
+    }
+
+    #taxi3 {
+      opacity: 0;
+      z-index: 7;
+      position: absolute;
+      top: 132px;
+      left: 694px;
+      width: 40px;
+      height: 40px;
+      transform: rotate(-180deg);
+      background-image: url(images/panel1_taxi_black.png);
       background-size: 40px 40px;
     }
 
@@ -131,6 +157,8 @@
         <div id="headline-bg"></div>
         <div id="bg-panel-1"></div>
         <div id="taxi1"></div>
+        <div id="taxi2"></div>
+        <div id="taxi3"></div>
       </div>
       <div id="slider-item-2" class="slider-item">
         
@@ -160,6 +188,8 @@
         $typePanel1       = document.getElementById('type'),
         $headlineBgPanel1 = document.getElementById('headline-bg'),
         $taxi1            = document.getElementById('taxi1'),
+        $taxi2            = document.getElementById('taxi2'),
+        $taxi3            = document.getElementById('taxi3'),
         // slider 2
         $sliderItemTwo    = document.getElementById('slider-item-2'),
         // slider 3
@@ -173,15 +203,29 @@
     tlPanel1.to($slider, .3, {opacity: 1})
             .add('panel-one')
             .to($sliderItemOne, .3, {opacity: 1})
+            .from($controls, .3, {opacity: 0}, '-=.3')
             .to($bgPanel1, .9, {scale: 1.5, ease: Power2.easeOut}, '-=.3')
-            // .to($bgPanel1, .6, {css: {"filter":"hue-rotate(35deg)"}}, '-=.5')
+            
             .set($typePanel1, {onComplete: typePanel1 }, '-=.6')
             .from($headlineBgPanel1, .9, {width: 0, ease: Back.easeOut}, '+=1.4' )
-            .to($taxi1, 1, {opacity: 1}, '-=.6')
-            .from($taxi1, 3, {top: "-38px", left: "90px", ease: Power3.easeOut})
-            // taxis
-            .to($taxi1, 4.2, {top: "348px", left: "472px", ease: Power3.easeIn}, '+=2')
-            .from($controls, .3, {opacity: 0})
+            .to($slider, {onComplete: function(){console.log(tlPanel1.time())}})
+            .add('taxis')
+            // taxi1
+            .set($taxi1, {opacity: 1}, 'taxis')
+            .from($taxi1, 3, {top: "-38px", left: "90px", ease: Power3.easeOut}, 'taxis+1')
+            .to($taxi1, 4.2, {top: "348px", left: "472px", ease: Power3.easeIn}, 'taxis+=3')
+            // taxi2
+            .set($taxi2, {opacity: 1}, 'taxis')
+            .to($taxi2, 5, {top: "-46px", left: "429px", ease: Linear.easeNone}, 'taxis')
+            // taxi3
+            .set($taxi3, {opacity: 1}, 'taxis')
+            .from($taxi3, 4, {top: "348px", left: "911px", ease: Power3.easeOut}, 'taxis+=1')
+            .to($taxi3, .6, {top: "120px", left: "680px", ease: Power3.easeIn}, 'taxis+=6')
+            .to($taxi3, 2, {top: "120px", left: "636px", rotate: 90, ease: Linear.easeNone}, 'taxis+=6.6')
+            .to($taxi3, 3, {top: "349px", left: "407px", ease: Linear.easeNone}, 'taxis+=8.5  ')
+
+
+            
             .add('panel-two')
 
             .add('panel-three')
