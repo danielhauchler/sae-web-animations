@@ -190,4 +190,4 @@ $prev.addEventListener("click", function () {
   }
 });
 
-new AnimPanel(tlPanel2)
+new AnimPanel(tlPanel4)
