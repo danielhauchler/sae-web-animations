@@ -273,26 +273,7 @@
   transform: translateY(-100px)
 }
 
-#slider-item-3-1-top,
-#slider-item-3-2-top,
-#slider-item-3-3-top,
-#slider-item-3-4-top {
-  height: 100px;
-  width: 100%;
-  background-image: url("images/panel3_infoBox.png");
-  background-size: 100%;
-}
-
-#slider-item-3-1-bottom,
-#slider-item-3-2-bottom,
-#slider-item-3-3-bottom,
-#slider-item-3-4-bottom {
-  height: 350px;
-  width: 100%;
-  background: rgb(231,122,115);
-  background: linear-gradient(180deg, rgba(231,122,115,1) 0%, rgba(181,56,54,1) 100%);
-}
-
+/* 
 #slider-item-3-1 {
   
 }
@@ -307,6 +288,62 @@
 
 #slider-item-3-4 {
   
+} */
+
+#slider-item-3-1-top,
+#slider-item-3-2-top,
+#slider-item-3-3-top,
+#slider-item-3-4-top {
+  height: 100px;
+  width: 100%;
+  background-image: url("images/panel3_infoBox.png");
+  background-size: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+#slider-item-3-1-top .headline,
+#slider-item-3-2-top .headline,
+#slider-item-3-3-top .headline,
+#slider-item-3-4-top .headline {
+  font-size: 18px;
+  font-weight: 600;
+  color: #fff;
+  margin-bottom: 5px;
+}
+
+
+#slider-item-3-1-top .text,
+#slider-item-3-2-top .text,
+#slider-item-3-3-top .text,
+#slider-item-3-4-top .text {
+  font-size: 12px;
+  font-weight: 300;
+  color: #fff;
+  line-height: 1.5;
+}
+
+#slider-item-3-1-bottom,
+#slider-item-3-2-bottom,
+#slider-item-3-3-bottom,
+#slider-item-3-4-bottom {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 350px;
+  width: 100%;
+  background: rgb(231,122,115);
+  background: linear-gradient(180deg, rgba(231,122,115,1) 0%, rgba(181,56,54,1) 100%);
+}
+
+#slider-item-3-1-bottom .clothes,
+#slider-item-3-2-bottom .clothes,
+#slider-item-3-3-bottom .clothes,
+#slider-item-3-4-bottom .clothes {
+  width: 190px;
+  height: 243px;
+  background-size: 100%;
+  background-image: url("images/panel3_shirt1.png");
 }
 
 #slider-item-3 #bg-panel-3 {

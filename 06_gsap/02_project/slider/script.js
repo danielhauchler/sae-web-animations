@@ -23,6 +23,7 @@ var $slider = document.getElementById('slider'),
     // slider 3
     $sliderItemThree = document.getElementById('slider-item-3'),
     $opener = document.querySelectorAll('.opener'),
+    $clothes = document.querySelectorAll('.clothes'),
     // slider 4
     $sliderItemFour = document.getElementById('slider-item-4');
 
@@ -35,6 +36,18 @@ var tlPanel1 = new gsap.timeline(),
 
 
 gsap.to($controls, .3, { opacity: 1 }, '-=.3')
+
+function typePanel1() {
+  Typed.new('#type', {
+    strings: ["The American Dream."],
+    stringsElement: null,
+    typeSpeed: 24,
+    startDelay: 600,
+    attr: null,
+    contentType: 'html',
+    showCursor: false,
+  });
+}
 
 tlPanel1.pause()
         .to($sliderItemOne, .3, { opacity: 1 })
@@ -58,7 +71,6 @@ tlPanel1.pause()
         .to($taxi3, 2, { top: "120px", left: "636px", rotate: 90, ease: Power3.easeOut }, 'taxis+=8')
         .to($taxi3, 3, { top: "349px", left: "407px", ease: Linear.easeNone }, 'taxis+=10  ')
 
-
 tlScissors.pause()
           .add('scissors')
           .from($scissors1, .6, {rotate: 0, ease: Power1.easeInOut}, 'scissors')
@@ -75,15 +87,14 @@ tlPanel2.pause()
         .from($headlinePanel2Wrap, .6, {width: 0, ease: Power1.easeInOut}, '+=.3')
         .from($sublinePanel2, .6, {opacity: 0, y: 10})
         
-
-
         .set($headlinePanel2Wrap, {onComplete: function() {tlScissors.play(0)}})
-
 
         .to($slider, .3, {opacity: 1}, '+=10')
         
 
 tlPanel3.pause()
+
+
 
 tlPanel4.pause()
 
@@ -99,24 +110,22 @@ $sliderItemTwo.addEventListener("mouseout", mouseOut);
 
 
 // Panel 3
-
 function animOpenerItemMouseover() {
-  gsap.to(this,.6, {y:0, ease: Power1.easeInOut})
+  gsap.to(this,.9, {y:0, ease: Power1.easeInOut})
+  gsap.to(this.getElementsByClassName('clothes'), .3, {rotate: -45, ease: Power3.easeInOut})
+  gsap.to(this.getElementsByClassName('clothes'), .3, {rotate: 45, ease: Power3.easeInOut, delay: .1})
+  gsap.to(this.getElementsByClassName('clothes'), .3, {rotate: 0, ease: Power3.easeInOut, delay: .3})
 }
 function animOpenerItemMouseout() {
-  gsap.to(this,.6, {y:-100, ease: Power1.easeInOut})
+  gsap.to(this, .9, {y:-100, ease: Power1.easeInOut})
+
+  console.log(this)
 }
 
 $opener.forEach(element => {
   element.addEventListener("mouseover", animOpenerItemMouseover)
   element.addEventListener("mouseout", animOpenerItemMouseout)
 });
-
-console.log($opener)
-
-
-
-
 
 var index = 1;
 
@@ -180,16 +189,5 @@ $prev.addEventListener("click", function () {
     index = 1;
   }
 });
-function typePanel1() {
-  Typed.new('#type', {
-    strings: ["The American Dream."],
-    stringsElement: null,
-    typeSpeed: 24,
-    startDelay: 600,
-    attr: null,
-    contentType: 'html',
-    showCursor: false,
-  });
-}
 
 new AnimPanel(tlPanel2)
